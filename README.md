@@ -48,7 +48,7 @@ Now, add a password then click Save.
 Add role: Invoice Operator; Scope: University of Michigan; Status: Active; Save Role.  
 Add role: Invoice Operator Extended; Scope: University of Michigan; Status: Active; Save Role.  
 
-Now log into Alma.  
+Now log into Alma as the new user you created.  
 Make “Review (Invoice)” the first quick link by doing this:  
 Click Acquisitions and the star next to “Review (Invoice)” to add the quick link.  
 That makes Ctrl+Alt+1 the keyboard shortcut to Review (Invoice).  
@@ -74,7 +74,8 @@ First, add the password for the user you created in Alma to this line, between t
 ```
 element.send_keys('')
 ```
-Next, make sure that the ```driver.get``` line has the appropriate Alma environment (Sandbox/Production) or the appropriate Alma institution.
+Next, make sure that the ```driver.get``` line has the appropriate Alma environment (Sandbox/Production) or the appropriate Alma institution.  
+Save your changes.  
 You can now run the software with this command typed into PowerShell, followed by pressing Enter:
 ```
 python main.py
@@ -88,4 +89,8 @@ python main.py
 - The program creates a log file which records when it started, ended, and the invoice number and vendor name of each invoice deleted.
 
 ## Clean up
+Give this command in PowerShell to close the virtual environment:
+```
+deactivate
+```
 Go into Alma and make the Alma Bot user inactive once you are finished.
