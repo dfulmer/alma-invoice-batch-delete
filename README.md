@@ -88,6 +88,8 @@ python main.py
 
 - The program creates a log file which records when it started, ended, and the invoice number and vendor name of each invoice deleted.
 
+- You need to avoid having your computer go to sleep during the invoice batch delete process. Although it may appear on your screen that your computer is active and performing activities that would prevent it from going to sleep, that is not the case, and when your computer falls asleep the software will stop.
+
 ## Clean up
 Give this command in PowerShell to close the virtual environment:
 ```
