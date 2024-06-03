@@ -71,7 +71,7 @@ while i < 75:
     # i += 1
   except:
     # This means there was a problem or there are no more invoices to delete. Pause and increment the counter.
-    logging.info(f"An issue arose... i = {i}")
+    logging.info(f"An issue arose... i = {i} {datetime.now()}")
     i += 1
     time.sleep(15)
 
