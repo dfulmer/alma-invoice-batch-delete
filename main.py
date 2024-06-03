@@ -45,7 +45,7 @@ time.sleep(3)
 # Set a counter, i, equal to 1. It will increase by one each time there is a problem or when there are no more invoices to delete, allowing for the program to end.
 i = 1
 
-while i < 3:
+while i < 75:
   try:
     # Go to Review(Invoice)
     ActionChains(driver).key_down(Keys.CONTROL).key_down(Keys.ALT).send_keys('1').key_up(Keys.CONTROL).key_up(Keys.ALT).perform()
@@ -54,24 +54,27 @@ while i < 3:
     ActionChains(driver).key_down(Keys.ALT).send_keys('2').key_up(Keys.ALT).perform()
     time.sleep(3)
     # Get the invoice number and vendor and put them into variables
-    invoicenumber = driver.find_element(By.ID,"SELENIUM_ID_invoiceList_ROW_0_COL_invoiceNumber")
-    invoicevendor = driver.find_element(By.ID,"SELENIUM_ID_invoiceList_ROW_0_COL_vendorname")
-    # Log what is being deleted
-    logging.info(f'{invoicenumber.text}\t{invoicevendor.text}\t deleting at: {datetime.now()}')
+    invoicenumber = driver.find_element(By.ID,"SELENIUM_ID_invoiceList_ROW_0_COL_invoiceNumber").text
+    invoicevendor = driver.find_element(By.ID,"SELENIUM_ID_invoiceList_ROW_0_COL_vendorname").text
     # Do the actual deletion. Click on the row actions list.
     driver.find_element(By.ID,"input_invoiceList_0").click()
-    time.sleep(1)
+    time.sleep(2)
     # Click Delete
     driver.find_element(By.XPATH,"//a[@title='Delete']").click()
-    time.sleep(1)
+    time.sleep(4)
     # Click Confirm
     driver.find_element(By.ID,"PAGE_BUTTONS_cbuttonconfirmationconfirm").click()
-    time.sleep(11)
-    i += 1
+    time.sleep(18)
+    # Log what is being deleted
+    logging.info(f'{invoicenumber}\t{invoicevendor}\t deleted at: {datetime.now()}')
+    # Comment in the following line to have the script stop after deleting the number of invoices n in the while i < n: line above.
+    # i += 1
   except:
     # This means there was a problem or there are no more invoices to delete. Pause and increment the counter.
-    logging.info(f"An issue arose... i = {i}")
+    time.sleep(5)
+    logging.info(f"An issue arose... i = {i} {datetime.now()}")
     i += 1
+    ActionChains(driver).key_down(Keys.ESCAPE).key_up(Keys.ESCAPE).perform()
     time.sleep(15)
 
 time.sleep(2)
