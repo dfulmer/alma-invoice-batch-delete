@@ -54,10 +54,8 @@ while i < 75:
     ActionChains(driver).key_down(Keys.ALT).send_keys('2').key_up(Keys.ALT).perform()
     time.sleep(3)
     # Get the invoice number and vendor and put them into variables
-    invoicenumber = driver.find_element(By.ID,"SELENIUM_ID_invoiceList_ROW_0_COL_invoiceNumber")
-    invoicevendor = driver.find_element(By.ID,"SELENIUM_ID_invoiceList_ROW_0_COL_vendorname")
-    # Log what is being deleted
-    logging.info(f'{invoicenumber.text}\t{invoicevendor.text}\t deleting at: {datetime.now()}')
+    invoicenumber = driver.find_element(By.ID,"SELENIUM_ID_invoiceList_ROW_0_COL_invoiceNumber").text
+    invoicevendor = driver.find_element(By.ID,"SELENIUM_ID_invoiceList_ROW_0_COL_vendorname").text
     # Do the actual deletion. Click on the row actions list.
     driver.find_element(By.ID,"input_invoiceList_0").click()
     time.sleep(2)
@@ -67,12 +65,16 @@ while i < 75:
     # Click Confirm
     driver.find_element(By.ID,"PAGE_BUTTONS_cbuttonconfirmationconfirm").click()
     time.sleep(18)
+    # Log what is being deleted
+    logging.info(f'{invoicenumber}\t{invoicevendor}\t deleted at: {datetime.now()}')
     # Comment in the following line to have the script stop after deleting the number of invoices n in the while i < n: line above.
     # i += 1
   except:
     # This means there was a problem or there are no more invoices to delete. Pause and increment the counter.
+    time.sleep(5)
     logging.info(f"An issue arose... i = {i} {datetime.now()}")
     i += 1
+    ActionChains(driver).key_down(Keys.ESCAPE).key_up(Keys.ESCAPE).perform()
     time.sleep(15)
 
 time.sleep(2)
