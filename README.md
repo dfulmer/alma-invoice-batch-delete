@@ -20,13 +20,15 @@ then you have Python. Type ```quit()```. If you get taken to the Windows store, 
 ## Retrieve a Chrome Driver
 Determine which version of Chrome you have by clicking on the three dots in the upper right hand corner > Help > About Google Chrome. It will say something like this: "Version 125.0.6422.113 (Official Build) (64-bit)"
 
-Here are instructions to get a Chrome Driver after version 115:
-https://www.browserstack.com/guide/run-selenium-tests-using-selenium-chromedriver
-Start here: https://developer.chrome.com/docs/chromedriver/downloads >
-consult the Chrome for Testing availability dashboard >
-https://googlechromelabs.github.io/chrome-for-testing/ >
-click Stable >
-Open the URL in the new browser window and ChromeDriver will be downloaded in zip format. Extract the content and move it to the desired location. In this example, we are using a folder on our Desktop called 'ibd' so go ahead and create a folder on your desktop called 'ibd'. So you should have a file called 'chromedriver.exe' in a folder called 'ibd' on your desktop: C:\Users\user\Desktop\ibd.
+Here are instructions to get a Chrome Driver after version 115:  
+https://www.browserstack.com/guide/run-selenium-tests-using-selenium-chromedriver  
+
+Start here: https://developer.chrome.com/docs/chromedriver/downloads  
+Click :consult the Chrome for Testing availability dashboard >   
+https://googlechromelabs.github.io/chrome-for-testing/ >  
+click Stable >  
+https://googlechromelabs.github.io/chrome-for-testing/#stable  
+Open the URL in a new browser window and a ChromeDriver will be downloaded in zip format. Extract the content and move the file called chromedriver.exe to the desired location. In this example, we are using a folder on our Desktop called 'ibd' so go ahead and create a folder on your desktop called 'ibd'. Now you should have a file called 'chromedriver.exe' in a folder called 'ibd' on your desktop: C:\Users\user\Desktop\ibd.
 
 ## Configuration in Alma
 Set up an Internal user with the ability to delete invoices called "Alma Bot".
@@ -69,7 +71,7 @@ python -m pip install selenium
 ```
 
 Finally, take a copy of the main.py file from this repository and paste it into the ibd folder on your desktop.  
-You need to make a few changes to the file main.py:
+You need to make a few changes to the file main.py:  
 First, add the password for the user you created in Alma to this line, between the single quotes:
 ```
 element.send_keys('')
