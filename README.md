@@ -24,10 +24,11 @@ Here are instructions to get a Chrome Driver after version 115:
 https://www.browserstack.com/guide/run-selenium-tests-using-selenium-chromedriver  
 
 Start here: https://developer.chrome.com/docs/chromedriver/downloads  
-Click :consult the Chrome for Testing availability dashboard >   
+Click: consult the Chrome for Testing availability dashboard >   
 https://googlechromelabs.github.io/chrome-for-testing/ >  
 click Stable >  
 https://googlechromelabs.github.io/chrome-for-testing/#stable  
+Go to the "chromedriver" section of the "Binary" column, locate your Platform, and then copy the URL in the URL column.  
 Open the URL in a new browser window and a ChromeDriver will be downloaded in zip format. Extract the content and move the file called chromedriver.exe to the desired location. In this example, we are using a folder on our Desktop called 'ibd' so go ahead and create a folder on your desktop called 'ibd'. Now you should have a file called 'chromedriver.exe' in a folder called 'ibd' on your desktop: C:\Users\user\Desktop\ibd.
 
 ## Configuration in Alma
@@ -65,7 +66,7 @@ PS C:\Users\user\Desktop\ibd> python -m venv venv
 PS C:\Users\user\Desktop\ibd> .\venv\Scripts\Activate.ps1
 (venv) PS C:\Users\user\Desktop\ibd>
 ```
-Now you are in a virtual environment, denoted by the (venv) before the prompt. Once there give this command:
+Now you are in a virtual environment, denoted by the (venv) before the prompt. Once there, give this command:
 ```
 python -m pip install selenium
 ```
