@@ -94,7 +94,9 @@ python main.py
 
 - Feel free to change the number of seconds in the sleep functions (the lines that look like this: ```time.sleep(5)```). Adding time will make the software slower but more reliable.
 
-- 
+- The one part of the program most likely to hang is the section after this: ```driver.find_element(By.ID,"PAGE_BUTTONS_cbuttonconfirmationconfirm").click()```. Clicking the Confirm button to delete the invoice appears to take longer for invoices with more lines. When an invoice has more then 25 lines it can take a while for it to delete. Invoices with 40+ and 50+ lines may exceed the 18 seconds of delay built into the program.
+
+- A note about ```i = 1``` and ```while i < 75:```: the purpose of this counter is twofold. Firstly, it allows for the program to repeat the process of deleting invoices over and over again. It also is a way of adding in some time when there is a problem deleting a particular invoice and the except block executes before resuming the routine invoice deletion. Secondly, it is there to allow the software to end when there are no more invoices to delete. So it manages problems throughout the invoice deletion process and then brings the process to an end when all invoices have been deleted.
 
 ## Clean up
 Give this command in PowerShell to close the virtual environment:
