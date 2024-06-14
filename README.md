@@ -20,13 +20,15 @@ then you have Python. Type ```quit()```. If you get taken to the Windows store, 
 ## Retrieve a Chrome Driver
 Determine which version of Chrome you have by clicking on the three dots in the upper right hand corner > Help > About Google Chrome. It will say something like this: "Version 125.0.6422.113 (Official Build) (64-bit)"
 
-Here are instructions to get a Chrome Driver after version 115:
-https://www.browserstack.com/guide/run-selenium-tests-using-selenium-chromedriver
-Start here: https://developer.chrome.com/docs/chromedriver/downloads >
-consult the Chrome for Testing availability dashboard >
-https://googlechromelabs.github.io/chrome-for-testing/ >
-click Stable >
-Open the URL in the new browser window and ChromeDriver will be downloaded in zip format. Extract the content and move it to the desired location. In this example, we are using a folder on our Desktop called 'ibd' so go ahead and create a folder on your desktop called 'ibd'. So you should have a file called 'chromedriver.exe' in a folder called 'ibd' on your desktop: C:\Users\user\Desktop\ibd.
+Here are instructions to get a Chrome Driver after version 115:  
+https://www.browserstack.com/guide/run-selenium-tests-using-selenium-chromedriver  
+
+Start here: https://developer.chrome.com/docs/chromedriver/downloads  
+Click :consult the Chrome for Testing availability dashboard >   
+https://googlechromelabs.github.io/chrome-for-testing/ >  
+click Stable >  
+https://googlechromelabs.github.io/chrome-for-testing/#stable  
+Open the URL in a new browser window and a ChromeDriver will be downloaded in zip format. Extract the content and move the file called chromedriver.exe to the desired location. In this example, we are using a folder on our Desktop called 'ibd' so go ahead and create a folder on your desktop called 'ibd'. Now you should have a file called 'chromedriver.exe' in a folder called 'ibd' on your desktop: C:\Users\user\Desktop\ibd.
 
 ## Configuration in Alma
 Set up an Internal user with the ability to delete invoices called "Alma Bot".
@@ -69,7 +71,7 @@ python -m pip install selenium
 ```
 
 Finally, take a copy of the main.py file from this repository and paste it into the ibd folder on your desktop.  
-You need to make a few changes to the file main.py:
+You need to make a few changes to the file main.py:  
 First, add the password for the user you created in Alma to this line, between the single quotes:
 ```
 element.send_keys('')
@@ -89,6 +91,12 @@ python main.py
 - The program creates a log file which records when it started, ended, and the invoice number and vendor name of each invoice deleted.
 
 - You need to avoid having your computer go to sleep during the invoice batch delete process. Although it may appear on your screen that your computer is active and performing activities that would prevent it from going to sleep, that is not the case, and when your computer falls asleep the software will stop.
+
+- Feel free to change the number of seconds in the sleep functions (the lines that look like this: ```time.sleep(5)```). Adding time will make the software slower but more reliable.
+
+- The one part of the program most likely to hang is the section after this: ```driver.find_element(By.ID,"PAGE_BUTTONS_cbuttonconfirmationconfirm").click()```. Clicking the Confirm button to delete the invoice appears to take longer for invoices with more lines. When an invoice has more then 25 lines it can take a while for it to delete. Invoices with 40+ and 50+ lines may exceed the 18 seconds of delay built into the program.
+
+- A note about ```i = 1``` and ```while i < 75:```: the purpose of this counter is twofold. Firstly, it allows for the program to repeat the process of deleting invoices over and over again. It also is a way of adding in some time when there is a problem deleting a particular invoice and the except block executes before resuming the routine invoice deletion. Secondly, it is there to allow the software to end when there are no more invoices to delete. So it manages problems throughout the invoice deletion process and then brings the process to an end when all invoices have been deleted.
 
 ## Clean up
 Give this command in PowerShell to close the virtual environment:
