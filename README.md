@@ -92,6 +92,10 @@ python main.py
 
 - You need to avoid having your computer go to sleep during the invoice batch delete process. Although it may appear on your screen that your computer is active and performing activities that would prevent it from going to sleep, that is not the case, and when your computer falls asleep the software will stop.
 
+- Feel free to change the number of seconds in the sleep functions (the lines that look like this: ```time.sleep(5)```). Adding time will make the software slower but more reliable.
+
+- 
+
 ## Clean up
 Give this command in PowerShell to close the virtual environment:
 ```
